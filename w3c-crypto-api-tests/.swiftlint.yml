@@ -1,0 +1,17 @@
+function_body_length:
+ - 200 # warning
+ - 300 # error
+
+included:
+ - platforms
+ - plugins
+
+disabled_rules: # rule identifiers to exclude from running
+  - function_parameter_count
+
+opt_in_rules: # some rules are only opt-in
+  - control_statement
+  - empty_count
+  - trailing_newline
+  - colon
+  - comma

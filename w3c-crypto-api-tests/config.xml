@@ -23,4 +23,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <engine name="ios" spec="^4.5.5" />
+    <plugin name="w3c-crypto-api" spec="../w3c-crypto-api" />
 </widget>

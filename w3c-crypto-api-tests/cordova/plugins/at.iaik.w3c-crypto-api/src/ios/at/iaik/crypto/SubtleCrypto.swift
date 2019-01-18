@@ -1,0 +1,3 @@
+class SubtleCrypto: PSubtleCrypto {
+    
+}

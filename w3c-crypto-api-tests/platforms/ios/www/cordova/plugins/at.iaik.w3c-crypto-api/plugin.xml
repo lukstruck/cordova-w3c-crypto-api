@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="at.iaik.w3c-crypto-api" version="1.0.0">
+    <name>Crypto Plugin</name>
+    <description>W3C Web Crypto API</description>
+    <license>MIT</license>
+    <keywords>cordova, crypto, iaik, cryptography, w3c</keywords>
+
+    <asset src="www/js/Promise.min.js" target="plugins/Promise.min.js" />
+
+    <asset src="www/js/Crypto.js" target="plugins/crypto.js" />
+    <asset src="www/js/SubtleCrypto.js" target="plugins/subtleCrypto.js" />
+
+    <js-module src="www/js/Crypto.js" name="crypto">
+        <clobbers target="crypto" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="w3c-crypto-api">
+                <param name="ios-package" value="CDVDevice"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/at/iaik/crypto/Algorithm.swift" />
+        <source-file src="src/ios/at/iaik/crypto/CryptoKey.swift" />
+        <source-file src="src/ios/at/iaik/crypto/PCrypto.swift" />
+        <source-file src="src/ios/at/iaik/crypto/Crypto.swift" />
+        <source-file src="src/ios/at/iaik/crypto/PSubtleCrypto.swift" />
+        <source-file src="src/ios/at/iaik/crypto/SubtleCrypto.swift" />
+    </platform>
+</plugin> 

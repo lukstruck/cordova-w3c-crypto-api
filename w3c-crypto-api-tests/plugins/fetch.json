@@ -1,0 +1,18 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "w3c-crypto-api": {
+    "source": {
+      "type": "local",
+      "path": "/Users/admin/Documents/UNI/acn/a2/cordova-w3c-crypto-api/w3c-crypto-api-tests/node_modules/w3c-crypto-api"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}
