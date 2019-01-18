@@ -1,0 +1,63 @@
+# Cordova W3C Web Crypto API
+
+This is a Cordova plugin for ios that implements some of the W3C Web Crypto API functionality.
+
+## Getting Started
+
+The repo contains two sub folders, 
+
+```
+w3c-crypto-api
+w3c-crypto-api-tests
+```
+
+with the former being a complete Cordova project to test the plugin. All development of the plugin should be done in the project as well, as I didn't find any convenient way to open the plugin files in XCode otherwise.
+
+To install the plugin, clone the repo and open a terminal in your Cordova project. Then `cordova plugin add "/path/to/this/repo/w3c-crypto-api"`.
+
+### Prerequisites
+
+You will need a Cordova project with an iOS platform. If you want to test this plugin, open the existing Cordova Test Project: `w3c-crypto-api-tests`.
+
+## Running the tests
+
+To run the tests, simply type `npm run all-tests` in the main folder.
+
+### SwiftLint
+
+Linting exists, run it by typing 
+
+```
+npm run lint
+```
+
+You can manually run the different linters by typing
+
+```
+npm run swiftlint
+npm run jslint
+```
+
+SwiftLint also supports autocorrect:
+
+```
+swiftlint autocorrect
+```
+
+### Unit Tests
+
+I didn't find any way to Unit Test a cordova plugin yet. I am working on this.
+
+### Manual Tests
+
+You can manually test the plugin by running the test application. If it does not crash, all tests run successfully (Only method yet).
+Run the test application with:
+
+```
+cd w3c-crypto-api-tests
+npm run emu-test
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

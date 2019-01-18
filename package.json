@@ -1,0 +1,19 @@
+{
+    "name": "w3c-crypto-api",
+    "displayName": "Cordova CryptoAPI",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lukstruck/cordova-w3c-crypto-api.git"
+    },
+    "description": "Implementing some functionalities from the W3C Crypto API as documented in the web. A list of the implemented functionalities can be found in the README.MD",
+    "scripts": {
+        "all-tests": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "swiftLint": "echo \"Error: no test specified\" && exit 1",
+        "jsLint": "echo \"Error: no test specified\" && exit 1",
+        "lint": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Lukas Struck",
+    "license": "MIT"
+}
