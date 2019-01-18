@@ -1,13 +1,14 @@
 function_body_length:
- - 200 # warning
- - 300 # error
+  - 200 # warning
+  - 300 # error
 
 included:
- - platforms
- - plugins
+  - platforms
+  - plugins
 
 disabled_rules: # rule identifiers to exclude from running
   - function_parameter_count
+  - identifier_name
 
 opt_in_rules: # some rules are only opt-in
   - control_statement
@@ -15,3 +16,4 @@ opt_in_rules: # some rules are only opt-in
   - trailing_newline
   - colon
   - comma
+
