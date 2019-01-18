@@ -27,5 +27,8 @@
         <source-file src="src/ios/at/iaik/crypto/Crypto.swift" />
         <source-file src="src/ios/at/iaik/crypto/PSubtleCrypto.swift" />
         <source-file src="src/ios/at/iaik/crypto/SubtleCrypto.swift" />
+        <source-file src="src/ios/at/iaik/crypto/AESEngine.swift" />
+        <source-file src="src/ios/at/iaik/crypto/HMACEngine.swift" />
+        <source-file src="src/ios/at/iaik/crypto/SwCrypt.swift" />
     </platform>
 </plugin> 

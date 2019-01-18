@@ -1,4 +1,4 @@
 protocol PCrypto {
-    func getRandomValues(length: Int) -> Any
+    func getRandomValues(bytes: inout [Int]) -> Any
     var subtle: PSubtleCrypto { get }
 }

@@ -1,14 +1,12 @@
 class Crypto: PCrypto {
-    
     var subtle: PSubtleCrypto
-    
-    init(){
+
+    init() {
         self.subtle = SubtleCrypto()
     }
-    
-    func getRandomValues(length: Int) -> Any{
-        abort()
+
+    func getRandomValues( bytes: inout [Int]) -> Any {
+        return SecRandomCopyBytes(kSecRandomDefault, bytes.capacity, &bytes)
     }
-    
-    
+
 }

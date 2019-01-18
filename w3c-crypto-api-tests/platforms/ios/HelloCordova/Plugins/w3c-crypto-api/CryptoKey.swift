@@ -23,8 +23,9 @@ enum KeyFormat {
 }
 
 protocol CryptoKey {
-  var type: KeyType { get }
-  var extractable: Bool { get }
-  var algorithm: AlgorithmIdentifier { get }
-  var usages: [KeyUsage] { get }
+    var type: KeyType { get }
+    var extractable: Bool { get }
+    var algorithm: AlgorithmIdentifier { get }
+    var usages: [KeyUsage] { get }
+    var key: Data { get }
 }

@@ -1,10 +1,15 @@
 class SubtleCrypto: PSubtleCrypto {
-    func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: [Int]) -> Any {
-        abort()
+
+    func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) throws -> Any {
+        data = try CC.crypt(.encrypt, blockMode: .cbc, algorithm: .aes,
+                 padding: .pkcs7Padding, data: data, key: key.key, iv: algorithm.iv!)
+        return ERR_SUCCESS
     }
 
-    func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: [Int]) -> Any {
-        abort()
+    func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) throws -> Any {
+        data = try CC.crypt(.decrypt, blockMode: .cbc, algorithm: .aes,
+                     padding: .pkcs7Padding, data: data, key: key.key, iv: algorithm.iv!)
+        return ERR_SUCCESS
     }
 
     func sign(algorithm: AlgorithmIdentifier, key: CryptoKey, data: [Int]) -> Any {
@@ -23,7 +28,8 @@ class SubtleCrypto: PSubtleCrypto {
         abort()
     }
 
-    func deriveKey(algorithm: AlgorithmIdentifier, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> Any {
+    func deriveKey(algorithm: AlgorithmIdentifier, baseKey: CryptoKey,
+                   derivedKeyType: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> Any {
         abort()
     }
 
@@ -31,7 +37,8 @@ class SubtleCrypto: PSubtleCrypto {
         abort()
     }
 
-    func importKey(format: KeyFormat, keyData: [Int], algorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> CryptoKey {
+    func importKey(format: KeyFormat, keyData: [Int], algorithm: AlgorithmIdentifier,
+                   extractable: Bool, keyUsages: [KeyUsage]) -> CryptoKey {
         abort()
     }
 
@@ -39,11 +46,14 @@ class SubtleCrypto: PSubtleCrypto {
         abort()
     }
 
-    func wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier) -> Any {
+    func wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey,
+                 wrapAlgorithm: AlgorithmIdentifier) -> Any {
         abort()
     }
 
-    func unwrapKey(format: KeyFormat, wrappedKey: [Int], unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier, unwrappedKeyAlgorithm: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> CryptoKey {
+    func unwrapKey(format: KeyFormat, wrappedKey: [Int], unwrappingKey: CryptoKey,
+                   unwrapAlgorithm: AlgorithmIdentifier, unwrappedKeyAlgorithm: AlgorithmIdentifier,
+                   extractable: Bool, keyUsages: [KeyUsage]) -> CryptoKey {
         abort()
     }
 
