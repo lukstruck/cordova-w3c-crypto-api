@@ -1,14 +1,23 @@
 import Foundation
 
-class AESEngine {
+class AESEngine: EncryptDecryptEngine, KeyEngine {
+    
+    func encrypt(_ algorithm: AlgorithmIdentifier, _ key: CryptoKey, _ data: inout Data) throws -> Any {
+        return try AESEngine.encrypt(algorithm: algorithm.algorithm, digest: data, iv: algorithm.iv!, key: key.key)
+    }
+    
+    func decrypt(_ algorithm: AlgorithmIdentifier, _ key: CryptoKey, _ data: inout Data) throws -> Any {
+        return try AESEngine.decrypt(algorithm: algorithm.algorithm, encrypted: data, iv: algorithm.iv!, key: key.key)
+    }
+    
 
+    // TODO move this to CryptoError.swift
     enum Error: Swift.Error {
         case keyGeneration(status: Int)
         case cryptoFailed(status: CCCryptorStatus)
-        case badKeyLength
-        case badInputVectorLength
     }
 
+    // TODO remove this wrap
     static func encrypt(algorithm: Algorithm, digest: Data, iv: Data, key: Data) throws -> Data {
         return try crypt(algorithm: algorithm, input: digest, operation: CCOperation(kCCEncrypt), iv: iv, key: key)
     }
@@ -25,16 +34,16 @@ class AESEngine {
             iv.withUnsafeBytes { (ivBytes: UnsafePointer<UInt8>!) in
                 key.withUnsafeBytes { (keyBytes: UnsafePointer<UInt8>!) -> Void in
                     status = CCCrypt(operation,
-                                     CCAlgorithm(kCCAlgorithmAES128),            // algorithm
-                        CCOptions(kCCOptionPKCS7Padding),           // options
-                        keyBytes,                                   // key
-                        key.count,                                  // keylength
-                        ivBytes,                                    // iv
-                        encryptedBytes,                             // dataIn
-                        input.count,                                // dataInLength
-                        &outBytes,                                  // dataOut
-                        outBytes.count,                             // dataOutAvailable
-                        &outLength)                                 // dataOutMoved
+                                    CCAlgorithm(kCCAlgorithmAES128),            // algorithm
+                                    CCOptions(kCCOptionPKCS7Padding),           // options
+                                    keyBytes,                                   // key
+                                    key.count,                                  // keylength
+                                    ivBytes,                                    // iv
+                                    encryptedBytes,                             // dataIn
+                                    input.count,                                // dataInLength
+                                    &outBytes,                                  // dataOut
+                                    outBytes.count,                             // dataOutAvailable
+                                    &outLength)                                 // dataOutMoved
                 }
             }
         }
@@ -44,6 +53,7 @@ class AESEngine {
         return Data(bytes: UnsafePointer<UInt8>(outBytes), count: outLength)
     }
 
+    // TODO implement KeyEngine
     static func generateKey(length: Int, extractable: Bool, keyUsages: [KeyUsage]) throws -> Any {
 
         var status = Int32(0)
@@ -71,6 +81,7 @@ class AESEngine {
 
     }
 
+    // TODO replace this with call to Crypto.swift
     static func random(length: Int) -> Data {
         var data = Data(count: length)
         let status = data.withUnsafeMutableBytes { mutableBytes in

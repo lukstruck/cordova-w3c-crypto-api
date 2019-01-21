@@ -1,14 +1,25 @@
 class SubtleCrypto: PSubtleCrypto {
+    
+    private var encryptDecryptEngine: EncryptDecryptEngine
+    private var signVerifyEngine: SignVerifyEngine
+    private var digestEngine: DigestEngine
+    private var keyEngine: KeyEngine
 
-    func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) throws -> Any {
-        data = try CC.crypt(.encrypt, blockMode: .cbc, algorithm: .aes,
-                 padding: .pkcs7Padding, data: data, key: key.key, iv: algorithm.iv!)
-        return ERR_SUCCESS
+    init(){
+        
+    }
+    
+    func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) -> Any {
+        var ret: Any = ERR_SUCCESS
+        do {
+            ret = try self.encryptDecryptEngine.encrypt(algorithm, key, &data)
+        } catch CryptoError.invalidAccessError(let field){
+            ret = field.data
+        }
+        return ret
     }
 
-    func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) throws -> Any {
-        data = try CC.crypt(.decrypt, blockMode: .cbc, algorithm: .aes,
-                     padding: .pkcs7Padding, data: data, key: key.key, iv: algorithm.iv!)
+    func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) -> Any {
         return ERR_SUCCESS
     }
 
@@ -28,6 +39,9 @@ class SubtleCrypto: PSubtleCrypto {
         abort()
     }
 
+    /**
+     deriveKey() returns a CryptoKey object rather than an ArrayBuffer. Essentially deriveKey() is composed of deriveBits() followed by importKey()
+    */
     func deriveKey(algorithm: AlgorithmIdentifier, baseKey: CryptoKey,
                    derivedKeyType: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> Any {
         abort()
