@@ -69,7 +69,7 @@ class AESEngine: EncryptDecryptEngine, KeyEngine {
                     saltBytes,                                    // salt
                     salt.count,                                   // saltLen
                     CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1),   // prf
-                    10000,                                        // rounds
+                    10000000,                                     // rounds
                     &derivedBytes,                                // derivedKey
                     length)                                       // derivedKeyLen
             }
