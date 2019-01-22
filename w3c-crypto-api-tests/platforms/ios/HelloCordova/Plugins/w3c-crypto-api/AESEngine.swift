@@ -1,29 +1,13 @@
 import Foundation
 
 class AESEngine: EncryptDecryptEngine, KeyEngine {
-    
+
     func encrypt(_ algorithm: AlgorithmIdentifier, _ key: CryptoKey, _ data: inout Data) throws -> Any {
-        return try AESEngine.encrypt(algorithm: algorithm.algorithm, digest: data, iv: algorithm.iv!, key: key.key)
+        return try AESEngine.crypt(algorithm: algorithm.algorithm, input: data, operation: CCOperation(kCCEncrypt), iv: algorithm.iv!, key: key.key)
     }
-    
+
     func decrypt(_ algorithm: AlgorithmIdentifier, _ key: CryptoKey, _ data: inout Data) throws -> Any {
-        return try AESEngine.decrypt(algorithm: algorithm.algorithm, encrypted: data, iv: algorithm.iv!, key: key.key)
-    }
-    
-
-    // TODO move this to CryptoError.swift
-    enum Error: Swift.Error {
-        case keyGeneration(status: Int)
-        case cryptoFailed(status: CCCryptorStatus)
-    }
-
-    // TODO remove this wrap
-    static func encrypt(algorithm: Algorithm, digest: Data, iv: Data, key: Data) throws -> Data {
-        return try crypt(algorithm: algorithm, input: digest, operation: CCOperation(kCCEncrypt), iv: iv, key: key)
-    }
-
-    static func decrypt(algorithm: Algorithm, encrypted: Data, iv: Data, key: Data) throws -> Data {
-        return try crypt(algorithm: algorithm, input: encrypted, operation: CCOperation(kCCDecrypt), iv: iv, key: key)
+        return try AESEngine.crypt(algorithm: algorithm.algorithm, input: data, operation: CCOperation(kCCDecrypt), iv: algorithm.iv!, key: key.key)
     }
 
     private static func crypt(algorithm: Algorithm, input: Data, operation: CCOperation, iv: Data, key: Data) throws -> Data {
@@ -48,7 +32,7 @@ class AESEngine: EncryptDecryptEngine, KeyEngine {
             }
         }
         guard status == kCCSuccess else {
-            throw Error.cryptoFailed(status: status)
+            throw CryptoError.cryptoFailed(status: status)
         }
         return Data(bytes: UnsafePointer<UInt8>(outBytes), count: outLength)
     }
@@ -75,7 +59,7 @@ class AESEngine: EncryptDecryptEngine, KeyEngine {
             }
         }
         guard status == 0 else {
-            throw Error.keyGeneration(status: Int(status))
+            throw CryptoError.keyGeneration(status: Int(status))
         }
         return Data(bytes: UnsafePointer<UInt8>(derivedBytes), count: length)
 

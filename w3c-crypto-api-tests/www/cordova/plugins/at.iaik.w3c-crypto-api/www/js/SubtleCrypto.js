@@ -1,6 +1,17 @@
 class SubtleCrypto {
 
-    encrypt(algorithm, key, data)
+    encrypt(algorithm, key, data){
+        let ret = new Promise();
+        
+        // TODO normalizedAlgorithm
+        // TODO async
+        return ret;
+        cordova.exec(ret.resolve, ret.reject, "CryptoWrapper", "encrypt", {
+                         "algorithm": algorithm,
+                         "key": key,
+                         "data": data
+                     });
+    }
 
     decrypt(algorithm, key, data)
 

@@ -19,10 +19,11 @@
 		8431ABCA21F274B800F52F1B /* HMACEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABC921F274B800F52F1B /* HMACEngine.swift */; };
 		8431ABCC21F2885500F52F1B /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABCB21F2885500F52F1B /* SwCrypt.swift */; };
 		8431ABD221F6269E00F52F1B /* CryptoEngines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABD121F6269E00F52F1B /* CryptoEngines.swift */; };
-		8431ABD521F629B700F52F1B /* CryptoErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABD421F629B700F52F1B /* CryptoErrors.swift */; };
-		8431ABE121F749BF00F52F1B /* HelloCordovaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABE021F749BF00F52F1B /* HelloCordovaTests.swift */; };
+		8431ABD521F629B700F52F1B /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABD421F629B700F52F1B /* CryptoError.swift */; };
+		8431ABE121F749BF00F52F1B /* SubtleCryptoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABE021F749BF00F52F1B /* SubtleCryptoTest.swift */; };
 		8431ABE821F749D300F52F1B /* AESEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABD621F748B600F52F1B /* AESEngineTest.swift */; };
 		8431ABE921F749D900F52F1B /* HMACEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABD821F748DA00F52F1B /* HMACEngineTest.swift */; };
+		8431ABEB21F786CD00F52F1B /* CryptoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8431ABEA21F786CD00F52F1B /* CryptoWrapper.swift */; };
 		9F0F29E1B3DA4C529BC47399 /* SubtleCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F762696BF3240ECA6F8CC99 /* SubtleCrypto.swift */; };
 		A22ABCF13F704509A8521FE5 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DD8C139E1408CBC7813BF /* Crypto.swift */; };
 		BAEB112D4CE842F19B37356B /* PCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348259357E5B4F00967F63F2 /* PCrypto.swift */; };
@@ -85,12 +86,13 @@
 		8431ABC921F274B800F52F1B /* HMACEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMACEngine.swift; path = "w3c-crypto-api/HMACEngine.swift"; sourceTree = "<group>"; };
 		8431ABCB21F2885500F52F1B /* SwCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwCrypt.swift; path = "w3c-crypto-api/SwCrypt.swift"; sourceTree = "<group>"; };
 		8431ABD121F6269E00F52F1B /* CryptoEngines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CryptoEngines.swift; path = "w3c-crypto-api/CryptoEngines.swift"; sourceTree = "<group>"; };
-		8431ABD421F629B700F52F1B /* CryptoErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CryptoErrors.swift; path = "w3c-crypto-api/CryptoErrors.swift"; sourceTree = "<group>"; };
+		8431ABD421F629B700F52F1B /* CryptoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CryptoError.swift; path = "w3c-crypto-api/CryptoError.swift"; sourceTree = "<group>"; };
 		8431ABD621F748B600F52F1B /* AESEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESEngineTest.swift; sourceTree = "<group>"; };
 		8431ABD821F748DA00F52F1B /* HMACEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACEngineTest.swift; sourceTree = "<group>"; };
 		8431ABDE21F749BF00F52F1B /* HelloCordovaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloCordovaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8431ABE021F749BF00F52F1B /* HelloCordovaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloCordovaTests.swift; sourceTree = "<group>"; };
+		8431ABE021F749BF00F52F1B /* SubtleCryptoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtleCryptoTest.swift; sourceTree = "<group>"; };
 		8431ABE221F749BF00F52F1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8431ABEA21F786CD00F52F1B /* CryptoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CryptoWrapper.swift; path = "w3c-crypto-api/CryptoWrapper.swift"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* HelloCordova-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "HelloCordova-Info.plist"; path = "HelloCordova/HelloCordova-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		DAD9706FE0744BFD822C7919 /* PSubtleCrypto.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = PSubtleCrypto.swift; path = "w3c-crypto-api/PSubtleCrypto.swift"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
@@ -221,7 +223,8 @@
 				3F0DD8C139E1408CBC7813BF /* Crypto.swift */,
 				DAD9706FE0744BFD822C7919 /* PSubtleCrypto.swift */,
 				4F762696BF3240ECA6F8CC99 /* SubtleCrypto.swift */,
-				8431ABD421F629B700F52F1B /* CryptoErrors.swift */,
+				8431ABD421F629B700F52F1B /* CryptoError.swift */,
+				8431ABEA21F786CD00F52F1B /* CryptoWrapper.swift */,
 			);
 			name = Plugins;
 			path = HelloCordova/Plugins;
@@ -232,7 +235,7 @@
 			children = (
 				8431ABD821F748DA00F52F1B /* HMACEngineTest.swift */,
 				8431ABD621F748B600F52F1B /* AESEngineTest.swift */,
-				8431ABE021F749BF00F52F1B /* HelloCordovaTests.swift */,
+				8431ABE021F749BF00F52F1B /* SubtleCryptoTest.swift */,
 				8431ABE221F749BF00F52F1B /* Info.plist */,
 			);
 			path = HelloCordovaTests;
@@ -390,7 +393,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				8431ABC721F2740E00F52F1B /* AESEngine.swift in Sources */,
-				8431ABD521F629B700F52F1B /* CryptoErrors.swift in Sources */,
+				8431ABD521F629B700F52F1B /* CryptoError.swift in Sources */,
 				8431ABCA21F274B800F52F1B /* HMACEngine.swift in Sources */,
 				FDAB4D31AE3A49D1BFD53AF3 /* Algorithm.swift in Sources */,
 				5051DC5BD0514ACFBCF52B00 /* CryptoKey.swift in Sources */,
@@ -398,6 +401,7 @@
 				8431ABD221F6269E00F52F1B /* CryptoEngines.swift in Sources */,
 				A22ABCF13F704509A8521FE5 /* Crypto.swift in Sources */,
 				C5EB9133730D4604BCA3EE37 /* PSubtleCrypto.swift in Sources */,
+				8431ABEB21F786CD00F52F1B /* CryptoWrapper.swift in Sources */,
 				9F0F29E1B3DA4C529BC47399 /* SubtleCrypto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,7 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8431ABE121F749BF00F52F1B /* HelloCordovaTests.swift in Sources */,
+				8431ABE121F749BF00F52F1B /* SubtleCryptoTest.swift in Sources */,
 				8431ABE821F749D300F52F1B /* AESEngineTest.swift in Sources */,
 				8431ABE921F749D900F52F1B /* HMACEngineTest.swift in Sources */,
 			);

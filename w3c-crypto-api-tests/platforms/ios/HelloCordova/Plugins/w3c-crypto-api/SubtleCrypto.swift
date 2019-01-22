@@ -1,19 +1,20 @@
 class SubtleCrypto: PSubtleCrypto {
-    
+
     private var encryptDecryptEngine: EncryptDecryptEngine
     private var signVerifyEngine: SignVerifyEngine
     private var digestEngine: DigestEngine
     private var keyEngine: KeyEngine
 
-    init(){
-        
+    init() {
+
     }
-    
+
     func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) -> Any {
         var ret: Any = ERR_SUCCESS
+        // TODO param checks
         do {
             ret = try self.encryptDecryptEngine.encrypt(algorithm, key, &data)
-        } catch CryptoError.invalidAccessError(let field){
+        } catch CryptoError.invalidAccessError(let field) {
             ret = field.data
         }
         return ret

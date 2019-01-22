@@ -6,7 +6,6 @@
 // TODO create Factories for concrete classes
 import Foundation
 
-
 protocol EncryptDecryptEngine {
     func encrypt(_ algorithm: AlgorithmIdentifier, _ key: CryptoKey, _ data: inout Data) throws -> Any
     func decrypt(_ algorithm: AlgorithmIdentifier, _ key: CryptoKey, _ data: inout Data) throws -> Any
