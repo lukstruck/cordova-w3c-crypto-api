@@ -17,18 +17,22 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="w3c-crypto-api">
-                <param name="ios-package" value="CDVDevice"/>
+            <feature name="CryptoWrapper">
+                <param name="ios-package" value="CryptoWrapper"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
+        <source-file src="src/ios/at/iaik/crypto/AESEngine.swift" />
         <source-file src="src/ios/at/iaik/crypto/Algorithm.swift" />
-        <source-file src="src/ios/at/iaik/crypto/CryptoKey.swift" />
-        <source-file src="src/ios/at/iaik/crypto/PCrypto.swift" />
         <source-file src="src/ios/at/iaik/crypto/Crypto.swift" />
+        <source-file src="src/ios/at/iaik/crypto/CryptoEngines.swift" />
+        <source-file src="src/ios/at/iaik/crypto/CryptoError.swift" />
+        <source-file src="src/ios/at/iaik/crypto/CryptoKey.swift" />
+        <source-file src="src/ios/at/iaik/crypto/CryptoWrapper.swift" />
+        <source-file src="src/ios/at/iaik/crypto/HMACEngine.swift" />
+        <source-file src="src/ios/at/iaik/crypto/PCrypto.swift" />
         <source-file src="src/ios/at/iaik/crypto/PSubtleCrypto.swift" />
         <source-file src="src/ios/at/iaik/crypto/SubtleCrypto.swift" />
-        <source-file src="src/ios/at/iaik/crypto/AESEngine.swift" />
-        <source-file src="src/ios/at/iaik/crypto/HMACEngine.swift" />
         <source-file src="src/ios/at/iaik/crypto/SwCrypt.swift" />
     </platform>
 </plugin> 

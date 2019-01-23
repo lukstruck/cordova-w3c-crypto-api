@@ -1,14 +1,36 @@
 class SubtleCrypto: PSubtleCrypto {
-    
-    func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) throws -> Any {
-        data = try CC.crypt(.encrypt, blockMode: .cbc, algorithm: .aes,
-                 padding: .pkcs7Padding, data: data, key: key.key, iv: algorithm.iv!)
-        return ERR_SUCCESS
+
+    private var encryptDecryptEngine: EncryptDecryptEngine
+    private var signVerifyEngine: SignVerifyEngine
+    private var digestEngine: DigestEngine
+    private var keyEngine: KeyEngine
+
+    init() {
+
     }
 
-    func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) throws -> Any {
-        data = try CC.crypt(.decrypt, blockMode: .cbc, algorithm: .aes,
-                     padding: .pkcs7Padding, data: data, key: key.key, iv: algorithm.iv!)
+    func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) -> Any {
+        var ret: Any = ERR_SUCCESS
+        // TODO param checks
+        do { // TODO proper error handling
+            ret = try self.encryptDecryptEngine.encrypt(algorithm, key, &data)
+        } catch CryptoError.invalidAccessError(let field) {
+            ret = field.data
+        }catch CryptoError.algorithmNotSupported(let algorithm) {
+            ret = algorithm.data
+        }catch CryptoError.initFailed {
+            ret = "INIT FAILED"
+        }catch CryptoError.keyGeneration(let status){
+            ret = status
+        }catch CryptoError.cryptoFailed(let status){
+            ret = status
+        }catch{
+            ret = "undefined error"
+        }
+        return ret
+    }
+
+    func decrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) -> Any {
         return ERR_SUCCESS
     }
 
@@ -28,6 +50,9 @@ class SubtleCrypto: PSubtleCrypto {
         abort()
     }
 
+    /**
+     deriveKey() returns a CryptoKey object rather than an ArrayBuffer. Essentially deriveKey() is composed of deriveBits() followed by importKey()
+    */
     func deriveKey(algorithm: AlgorithmIdentifier, baseKey: CryptoKey,
                    derivedKeyType: AlgorithmIdentifier, extractable: Bool, keyUsages: [KeyUsage]) -> Any {
         abort()

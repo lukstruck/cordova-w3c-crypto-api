@@ -12,10 +12,20 @@ class SubtleCrypto: PSubtleCrypto {
     func encrypt(algorithm: AlgorithmIdentifier, key: CryptoKey, data: inout Data) -> Any {
         var ret: Any = ERR_SUCCESS
         // TODO param checks
-        do {
+        do { // TODO proper error handling
             ret = try self.encryptDecryptEngine.encrypt(algorithm, key, &data)
         } catch CryptoError.invalidAccessError(let field) {
             ret = field.data
+        }catch CryptoError.algorithmNotSupported(let algorithm) {
+            ret = algorithm.data
+        }catch CryptoError.initFailed {
+            ret = "INIT FAILED"
+        }catch CryptoError.keyGeneration(let status){
+            ret = status
+        }catch CryptoError.cryptoFailed(let status){
+            ret = status
+        }catch{
+            ret = "undefined error"
         }
         return ret
     }

@@ -1,11 +1,11 @@
 protocol PSubtleCrypto {
   func encrypt(algorithm: AlgorithmIdentifier,
                key: CryptoKey,
-               data: inout Data) throws -> Any
+               data: inout Data) -> Any
 
   func decrypt(algorithm: AlgorithmIdentifier,
                key: CryptoKey,
-               data: inout Data) throws -> Any
+               data: inout Data) -> Any
 
   func sign(algorithm: AlgorithmIdentifier,
             key: CryptoKey,

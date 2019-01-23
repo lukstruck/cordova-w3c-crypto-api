@@ -9,7 +9,7 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"w3c-crypto-api\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+              "xml": "<feature name=\"CryptoWrapper\"><param name=\"ios-package\" value=\"CryptoWrapper\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
