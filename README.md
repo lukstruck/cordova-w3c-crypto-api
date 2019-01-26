@@ -6,7 +6,7 @@ This is a Cordova plugin for ios that implements some of the W3C Web Crypto API 
 
 The repo contains two sub folders, 
 
-```
+```bash
 w3c-crypto-api/
 w3c-crypto-api-tests/
 ```
@@ -27,20 +27,20 @@ To run the tests, simply type `npm run all-tests` in the main folder.
 
 Linting exists, run it by typing 
 
-```
+```bash
 npm run lint
 ```
 
 You can manually run the different linters by typing
 
-```
+```bash
 npm run swiftlint
 npm run jslint
 ```
 
 SwiftLint also supports autocorrect:
 
-```
+```bash
 swiftlint autocorrect
 ```
 
@@ -53,7 +53,7 @@ There exist Swift Unit Tests in the w3c-crypto-api-tests project, you can access
 You can manually test the plugin by running the test application. If it does not crash, all tests run successfully (Only method yet).
 Run the test application with:
 
-```
+```bash
 cd w3c-crypto-api-tests
 npm run emu-test
 ```
@@ -64,7 +64,7 @@ npm run emu-test
 
 As it is common for a cordova plugin, the plugin contains two sub folders:
 
-```
+```bash
 src/
 www/
 ```

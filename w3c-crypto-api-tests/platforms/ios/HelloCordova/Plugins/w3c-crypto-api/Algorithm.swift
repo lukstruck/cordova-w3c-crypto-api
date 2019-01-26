@@ -9,7 +9,26 @@ enum Algorithm: String {
     case AES_CBC = "AES-CBC"
 }
 
-protocol AlgorithmIdentifier {
+protocol PAlgorithmIdentifier {
+    init(_ args: Any)
+    init(_ algorithm: Algorithm)
     var algorithm: Algorithm { get }
     var iv: Data? { get }
+}
+
+class AlgorithmIdentifier: PAlgorithmIdentifier {
+    required init(_ algorithm: Algorithm) {
+        self.algorithm = algorithm
+    }
+    
+    
+    required init(_ args: Any) {
+        self.algorithm = .AES_CBC // TODO use JSON members
+    }
+    
+    var algorithm: Algorithm
+    
+    var iv: Data?
+    
+    
 }
